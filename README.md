@@ -12,6 +12,8 @@
 
 ### Week03: Introduction to DL (Image Classification)
 
+2. Image classification with EfficientNetV2s : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/img/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Week03_IntroDL/Image_classification_HAM10000_EfficientNetV2.ipynb)
+
 ### Week04: Object detection (YOLO) 
 
 ### Week05: Image segmentation
