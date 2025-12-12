@@ -6,6 +6,21 @@
 
 ## Code:
 
-### Week01:
+### Week01: Introduction to ML (Practical ML)
 
-### Week02:
+### Week02: Use case of ML in medical records (Data Table)
+
+### Week03: Introduction to DL (Image Classification)
+
+### Week04: Object detection (YOLO) 
+
+### Week05: Image segmentation
+
+### Week06: Imaging tools
+
+### Week07: ASR + TTS
+
+### Week08: Intro to LLM
+
+### Week09: LLM in medical
+
