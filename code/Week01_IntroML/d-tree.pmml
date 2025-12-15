@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PMML version="4.2" xmlns="http://www.dmg.org/PMML-4_2">
+  <Header copyright="theerapatkangsilalai">
+    <Application name="KNIME" version="5.9.0"/>
+  </Header>
+  <DataDictionary numberOfFields="9">
+    <DataField name="Pregnancies" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="-1.1411078811017765" rightMargin="3.9040341763532806"/>
+    </DataField>
+    <DataField name="Glucose" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="-2.552467252374946" rightMargin="2.5401947400691367"/>
+    </DataField>
+    <DataField name="BloodPressure" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="-4.001636811494298" rightMargin="4.099983174325763"/>
+    </DataField>
+    <DataField name="SkinThickness" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="-2.520027976612053" rightMargin="7.945289708155167"/>
+    </DataField>
+    <DataField name="Insulin" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="-1.6648597867539936" rightMargin="8.120945430679264"/>
+    </DataField>
+    <DataField name="BMI" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="-2.073767251544641" rightMargin="5.038803464444907"/>
+    </DataField>
+    <DataField name="DiabetesPedigreeFunction" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="-1.1887784755437325" rightMargin="5.879733072364469"/>
+    </DataField>
+    <DataField name="Age" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="-1.040871123525531" rightMargin="4.061069241548044"/>
+    </DataField>
+    <DataField name="Outcome" optype="categorical" dataType="string">
+      <Value value="1"/>
+      <Value value="0"/>
+    </DataField>
+  </DataDictionary>
+  <TreeModel modelName="DecisionTree" functionName="classification" splitCharacteristic="binarySplit" missingValueStrategy="lastPrediction" noTrueChildStrategy="returnNullPrediction">
+    <MiningSchema>
+      <MiningField name="Pregnancies" invalidValueTreatment="asIs"/>
+      <MiningField name="Glucose" invalidValueTreatment="asIs"/>
+      <MiningField name="BloodPressure" invalidValueTreatment="asIs"/>
+      <MiningField name="SkinThickness" invalidValueTreatment="asIs"/>
+      <MiningField name="Insulin" invalidValueTreatment="asIs"/>
+      <MiningField name="BMI" invalidValueTreatment="asIs"/>
+      <MiningField name="DiabetesPedigreeFunction" invalidValueTreatment="asIs"/>
+      <MiningField name="Age" invalidValueTreatment="asIs"/>
+      <MiningField name="Outcome" invalidValueTreatment="asIs" usageType="target"/>
+    </MiningSchema>
+    <Node id="0" score="0" recordCount="537.0">
+      <True/>
+      <ScoreDistribution value="1" recordCount="187.0"/>
+      <ScoreDistribution value="0" recordCount="350.0"/>
+      <Node id="1" score="0" recordCount="415.0">
+        <SimplePredicate field="Glucose" operator="lessOrEqual" value="0.7166931879359328"/>
+        <ScoreDistribution value="1" recordCount="98.0"/>
+        <ScoreDistribution value="0" recordCount="317.0"/>
+        <Node id="2" score="0" recordCount="112.0">
+          <SimplePredicate field="BMI" operator="lessOrEqual" value="-0.786522858160029"/>
+          <ScoreDistribution value="1" recordCount="4.0"/>
+          <ScoreDistribution value="0" recordCount="108.0"/>
+        </Node>
+        <Node id="7" score="0" recordCount="303.0">
+          <SimplePredicate field="BMI" operator="greaterThan" value="-0.786522858160029"/>
+          <ScoreDistribution value="1" recordCount="94.0"/>
+          <ScoreDistribution value="0" recordCount="209.0"/>
+          <Node id="8" score="0" recordCount="93.0">
+            <SimplePredicate field="Glucose" operator="lessOrEqual" value="-0.7289657002417422"/>
+            <ScoreDistribution value="1" recordCount="11.0"/>
+            <ScoreDistribution value="0" recordCount="82.0"/>
+          </Node>
+          <Node id="17" score="0" recordCount="210.0">
+            <SimplePredicate field="Glucose" operator="greaterThan" value="-0.7289657002417422"/>
+            <ScoreDistribution value="1" recordCount="83.0"/>
+            <ScoreDistribution value="0" recordCount="127.0"/>
+            <Node id="18" score="0" recordCount="109.0">
+              <SimplePredicate field="Age" operator="lessOrEqual" value="-0.23306389905554825"/>
+              <ScoreDistribution value="1" recordCount="29.0"/>
+              <ScoreDistribution value="0" recordCount="80.0"/>
+            </Node>
+            <Node id="33" score="1" recordCount="101.0">
+              <SimplePredicate field="Age" operator="greaterThan" value="-0.23306389905554825"/>
+              <ScoreDistribution value="1" recordCount="54.0"/>
+              <ScoreDistribution value="0" recordCount="47.0"/>
+              <Node id="34" score="0" recordCount="63.0">
+                <SimplePredicate field="DiabetesPedigreeFunction" operator="lessOrEqual" value="0.1090268043881748"/>
+                <ScoreDistribution value="1" recordCount="27.0"/>
+                <ScoreDistribution value="0" recordCount="36.0"/>
+                <Node id="35" score="0" recordCount="20.0">
+                  <SimplePredicate field="Glucose" operator="lessOrEqual" value="-0.4825465715750932"/>
+                  <ScoreDistribution value="1" recordCount="4.0"/>
+                  <ScoreDistribution value="0" recordCount="16.0"/>
+                </Node>
+                <Node id="38" score="1" recordCount="43.0">
+                  <SimplePredicate field="Glucose" operator="greaterThan" value="-0.4825465715750932"/>
+                  <ScoreDistribution value="1" recordCount="23.0"/>
+                  <ScoreDistribution value="0" recordCount="20.0"/>
+                  <Node id="39" score="1" recordCount="18.0">
+                    <SimplePredicate field="BloodPressure" operator="lessOrEqual" value="-0.01674820513815245"/>
+                    <ScoreDistribution value="1" recordCount="14.0"/>
+                    <ScoreDistribution value="0" recordCount="4.0"/>
+                  </Node>
+                  <Node id="40" score="0" recordCount="25.0">
+                    <SimplePredicate field="BloodPressure" operator="greaterThan" value="-0.01674820513815245"/>
+                    <ScoreDistribution value="1" recordCount="9.0"/>
+                    <ScoreDistribution value="0" recordCount="16.0"/>
+                  </Node>
+                </Node>
+              </Node>
+              <Node id="43" score="1" recordCount="38.0">
+                <SimplePredicate field="DiabetesPedigreeFunction" operator="greaterThan" value="0.1090268043881748"/>
+                <ScoreDistribution value="1" recordCount="27.0"/>
+                <ScoreDistribution value="0" recordCount="11.0"/>
+              </Node>
+            </Node>
+          </Node>
+        </Node>
+      </Node>
+      <Node id="48" score="1" recordCount="122.0">
+        <SimplePredicate field="Glucose" operator="greaterThan" value="0.7166931879359328"/>
+        <ScoreDistribution value="1" recordCount="89.0"/>
+        <ScoreDistribution value="0" recordCount="33.0"/>
+      </Node>
+    </Node>
+  </TreeModel>
+</PMML>
