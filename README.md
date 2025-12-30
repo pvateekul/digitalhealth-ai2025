@@ -15,7 +15,7 @@
 ### Week03: Introduction to DL (Image Classification)
 1. Image classification with MobileNetV2 (Teachable Machine) : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Week03_IntroDL/Image_classification_HAM10000_MobileNetV2.ipynb)
    
-2. Image classification with EfficientNetV2 (PyTorch Lightning) : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Week03_IntroDL/Image_classification_HAM10000_EfficientNetV2.ipynb)
+2. Image classification with EfficientNetV2 (PyTorch Lightning) : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Class03_IntroDL/Lab_3_1_TeachableMachine.ipynb)
 
 ### Week04: Object detection (YOLO) 
 1. Model evaluation image detection with YOLO (Ultralytics Hub) : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Week04_YOLO/Detection_Kvasir_YOLO.ipynb)
