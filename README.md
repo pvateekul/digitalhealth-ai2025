@@ -32,6 +32,10 @@
    
 ### Class06: Imaging tools
 
+1. Object detection : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Class06_Roboflow/Lab_6_1_Detection.ipynb)
+   
+
+
 ### Class07: ASR + TTS
 
 ### Class08: Intro to LLM
