@@ -26,9 +26,9 @@
 
 ### Class05: Image segmentation
 
-1. 2D image segmentation (MONAI) : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Class05_MONAI/2Dsegmentaton_Unet(monai).ipynb)
+1. 2D image segmentation (MONAI) : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Class05_MONAI/Lab_5_1_MONAI(2Dsegmentaton).ipynb)
    
-2. 3D image segmentation (MONAI) : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Class05_MONAI/3Dsegmentaton_Unet(monai).ipynb)
+2. 3D image segmentation (MONAI) : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Class05_MONAI/Lab_5_2_MONAI(3Dsegmentaton).ipynb)
    
 ### Class06: Imaging tools
 
