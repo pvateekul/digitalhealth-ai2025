@@ -34,7 +34,7 @@
 
 1. Object detection : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Class06_Roboflow/Lab_6_1_Detection.ipynb)
 
-2. Segmentation : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Class06_Roboflow/Lab_6_2_roboflow_segment_pynb.ipynb)
+2. Segmentation : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Class06_Roboflow/Lab_6_2_Segment.ipynb)
    
 
 
