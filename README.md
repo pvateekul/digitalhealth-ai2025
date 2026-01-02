@@ -20,12 +20,16 @@
 ### Class04: Object detection (YOLO) 
 1. Model evaluation image detection with YOLO (Ultralytics Hub) : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Class04_YOLO/Lab_4_1_ultralyricshub.ipynb)
 
-2. Image segmentation with YOLO (Ultralytics) : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Class04_YOLO/Lab_4_2_ultralyrics.ipynb)
+2. Image detection with YOLO (Ultralytics) : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Class04_YOLO/Lab_4_2_ultralyrics.ipynb)
    
-(extra)3. Pose estimation with YOLO (Ultralytics) : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Class04_YOLO/Pose_YOLO.ipynb)
+3. Pose estimation with YOLO (extra) : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Class04_YOLO/Pose_YOLO.ipynb)
 
 ### Class05: Image segmentation
 
+1. 2D image segmentation (MONAI) : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Class05_MONAI/2Dsegmentaton_Unet(monai).ipynb)
+   
+2. 3D image segmentation (MONAI) : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Class05_MONAI/3Dsegmentaton_Unet(monai).ipynb)
+   
 ### Class06: Imaging tools
 
 ### Class07: ASR + TTS
