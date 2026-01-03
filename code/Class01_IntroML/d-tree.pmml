@@ -5,28 +5,28 @@
   </Header>
   <DataDictionary numberOfFields="9">
     <DataField name="Pregnancies" optype="continuous" dataType="double">
-      <Interval closure="closedClosed" leftMargin="-1.1411078811017765" rightMargin="3.9040341763532806"/>
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="17.0"/>
     </DataField>
     <DataField name="Glucose" optype="continuous" dataType="double">
-      <Interval closure="closedClosed" leftMargin="-2.552467252374946" rightMargin="2.5401947400691367"/>
+      <Interval closure="closedClosed" leftMargin="44.0" rightMargin="199.0"/>
     </DataField>
     <DataField name="BloodPressure" optype="continuous" dataType="double">
-      <Interval closure="closedClosed" leftMargin="-4.001636811494298" rightMargin="4.099983174325763"/>
+      <Interval closure="closedClosed" leftMargin="24.0" rightMargin="122.0"/>
     </DataField>
     <DataField name="SkinThickness" optype="continuous" dataType="double">
-      <Interval closure="closedClosed" leftMargin="-2.520027976612053" rightMargin="7.945289708155167"/>
+      <Interval closure="closedClosed" leftMargin="7.0" rightMargin="99.0"/>
     </DataField>
     <DataField name="Insulin" optype="continuous" dataType="double">
-      <Interval closure="closedClosed" leftMargin="-1.6648597867539936" rightMargin="8.120945430679264"/>
+      <Interval closure="closedClosed" leftMargin="14.0" rightMargin="846.0"/>
     </DataField>
     <DataField name="BMI" optype="continuous" dataType="double">
-      <Interval closure="closedClosed" leftMargin="-2.073767251544641" rightMargin="5.038803464444907"/>
+      <Interval closure="closedClosed" leftMargin="18.2" rightMargin="67.1"/>
     </DataField>
     <DataField name="DiabetesPedigreeFunction" optype="continuous" dataType="double">
-      <Interval closure="closedClosed" leftMargin="-1.1887784755437325" rightMargin="5.879733072364469"/>
+      <Interval closure="closedClosed" leftMargin="0.078" rightMargin="2.42"/>
     </DataField>
     <DataField name="Age" optype="continuous" dataType="double">
-      <Interval closure="closedClosed" leftMargin="-1.040871123525531" rightMargin="4.061069241548044"/>
+      <Interval closure="closedClosed" leftMargin="21.0" rightMargin="81.0"/>
     </DataField>
     <DataField name="Outcome" optype="categorical" dataType="string">
       <Value value="1"/>
@@ -49,75 +49,105 @@
       <True/>
       <ScoreDistribution value="1" recordCount="187.0"/>
       <ScoreDistribution value="0" recordCount="350.0"/>
-      <Node id="1" score="0" recordCount="415.0">
-        <SimplePredicate field="Glucose" operator="lessOrEqual" value="0.7166931879359328"/>
-        <ScoreDistribution value="1" recordCount="98.0"/>
+      <Node id="1" score="0" recordCount="412.0">
+        <SimplePredicate field="Glucose" operator="lessOrEqual" value="141.5"/>
+        <ScoreDistribution value="1" recordCount="95.0"/>
         <ScoreDistribution value="0" recordCount="317.0"/>
-        <Node id="2" score="0" recordCount="112.0">
-          <SimplePredicate field="BMI" operator="lessOrEqual" value="-0.786522858160029"/>
-          <ScoreDistribution value="1" recordCount="4.0"/>
-          <ScoreDistribution value="0" recordCount="108.0"/>
+        <Node id="2" score="0" recordCount="170.0">
+          <SimplePredicate field="Glucose" operator="lessOrEqual" value="103.5"/>
+          <ScoreDistribution value="1" recordCount="15.0"/>
+          <ScoreDistribution value="0" recordCount="155.0"/>
         </Node>
-        <Node id="7" score="0" recordCount="303.0">
-          <SimplePredicate field="BMI" operator="greaterThan" value="-0.786522858160029"/>
-          <ScoreDistribution value="1" recordCount="94.0"/>
-          <ScoreDistribution value="0" recordCount="209.0"/>
-          <Node id="8" score="0" recordCount="93.0">
-            <SimplePredicate field="Glucose" operator="lessOrEqual" value="-0.7289657002417422"/>
-            <ScoreDistribution value="1" recordCount="11.0"/>
-            <ScoreDistribution value="0" recordCount="82.0"/>
+        <Node id="13" score="0" recordCount="242.0">
+          <SimplePredicate field="Glucose" operator="greaterThan" value="103.5"/>
+          <ScoreDistribution value="1" recordCount="80.0"/>
+          <ScoreDistribution value="0" recordCount="162.0"/>
+          <Node id="14" score="0" recordCount="50.0">
+            <SimplePredicate field="BMI" operator="lessOrEqual" value="26.9"/>
+            <ScoreDistribution value="1" recordCount="4.0"/>
+            <ScoreDistribution value="0" recordCount="46.0"/>
           </Node>
-          <Node id="17" score="0" recordCount="210.0">
-            <SimplePredicate field="Glucose" operator="greaterThan" value="-0.7289657002417422"/>
-            <ScoreDistribution value="1" recordCount="83.0"/>
-            <ScoreDistribution value="0" recordCount="127.0"/>
-            <Node id="18" score="0" recordCount="109.0">
-              <SimplePredicate field="Age" operator="lessOrEqual" value="-0.23306389905554825"/>
-              <ScoreDistribution value="1" recordCount="29.0"/>
-              <ScoreDistribution value="0" recordCount="80.0"/>
+          <Node id="19" score="0" recordCount="192.0">
+            <SimplePredicate field="BMI" operator="greaterThan" value="26.9"/>
+            <ScoreDistribution value="1" recordCount="76.0"/>
+            <ScoreDistribution value="0" recordCount="116.0"/>
+            <Node id="20" score="0" recordCount="101.0">
+              <SimplePredicate field="Age" operator="lessOrEqual" value="29.5"/>
+              <ScoreDistribution value="1" recordCount="25.0"/>
+              <ScoreDistribution value="0" recordCount="76.0"/>
             </Node>
-            <Node id="33" score="1" recordCount="101.0">
-              <SimplePredicate field="Age" operator="greaterThan" value="-0.23306389905554825"/>
-              <ScoreDistribution value="1" recordCount="54.0"/>
-              <ScoreDistribution value="0" recordCount="47.0"/>
-              <Node id="34" score="0" recordCount="63.0">
-                <SimplePredicate field="DiabetesPedigreeFunction" operator="lessOrEqual" value="0.1090268043881748"/>
-                <ScoreDistribution value="1" recordCount="27.0"/>
-                <ScoreDistribution value="0" recordCount="36.0"/>
-                <Node id="35" score="0" recordCount="20.0">
-                  <SimplePredicate field="Glucose" operator="lessOrEqual" value="-0.4825465715750932"/>
-                  <ScoreDistribution value="1" recordCount="4.0"/>
-                  <ScoreDistribution value="0" recordCount="16.0"/>
+            <Node id="33" score="1" recordCount="91.0">
+              <SimplePredicate field="Age" operator="greaterThan" value="29.5"/>
+              <ScoreDistribution value="1" recordCount="51.0"/>
+              <ScoreDistribution value="0" recordCount="40.0"/>
+              <Node id="34" score="1" recordCount="79.0">
+                <SimplePredicate field="BMI" operator="lessOrEqual" value="39.65"/>
+                <ScoreDistribution value="1" recordCount="40.0"/>
+                <ScoreDistribution value="0" recordCount="39.0"/>
+                <Node id="35" score="1" recordCount="33.0">
+                  <SimplePredicate field="BloodPressure" operator="lessOrEqual" value="72.20259208731241"/>
+                  <ScoreDistribution value="1" recordCount="22.0"/>
+                  <ScoreDistribution value="0" recordCount="11.0"/>
                 </Node>
-                <Node id="38" score="1" recordCount="43.0">
-                  <SimplePredicate field="Glucose" operator="greaterThan" value="-0.4825465715750932"/>
-                  <ScoreDistribution value="1" recordCount="23.0"/>
-                  <ScoreDistribution value="0" recordCount="20.0"/>
-                  <Node id="39" score="1" recordCount="18.0">
-                    <SimplePredicate field="BloodPressure" operator="lessOrEqual" value="-0.01674820513815245"/>
-                    <ScoreDistribution value="1" recordCount="14.0"/>
-                    <ScoreDistribution value="0" recordCount="4.0"/>
+                <Node id="40" score="0" recordCount="46.0">
+                  <SimplePredicate field="BloodPressure" operator="greaterThan" value="72.20259208731241"/>
+                  <ScoreDistribution value="1" recordCount="18.0"/>
+                  <ScoreDistribution value="0" recordCount="28.0"/>
+                  <Node id="41" score="0" recordCount="34.0">
+                    <SimplePredicate field="DiabetesPedigreeFunction" operator="lessOrEqual" value="0.6635"/>
+                    <ScoreDistribution value="1" recordCount="10.0"/>
+                    <ScoreDistribution value="0" recordCount="24.0"/>
                   </Node>
-                  <Node id="40" score="0" recordCount="25.0">
-                    <SimplePredicate field="BloodPressure" operator="greaterThan" value="-0.01674820513815245"/>
-                    <ScoreDistribution value="1" recordCount="9.0"/>
-                    <ScoreDistribution value="0" recordCount="16.0"/>
+                  <Node id="46" score="1" recordCount="12.0">
+                    <SimplePredicate field="DiabetesPedigreeFunction" operator="greaterThan" value="0.6635"/>
+                    <ScoreDistribution value="1" recordCount="8.0"/>
+                    <ScoreDistribution value="0" recordCount="4.0"/>
                   </Node>
                 </Node>
               </Node>
-              <Node id="43" score="1" recordCount="38.0">
-                <SimplePredicate field="DiabetesPedigreeFunction" operator="greaterThan" value="0.1090268043881748"/>
-                <ScoreDistribution value="1" recordCount="27.0"/>
-                <ScoreDistribution value="0" recordCount="11.0"/>
+              <Node id="47" score="1" recordCount="12.0">
+                <SimplePredicate field="BMI" operator="greaterThan" value="39.65"/>
+                <ScoreDistribution value="1" recordCount="11.0"/>
+                <ScoreDistribution value="0" recordCount="1.0"/>
               </Node>
             </Node>
           </Node>
         </Node>
       </Node>
-      <Node id="48" score="1" recordCount="122.0">
-        <SimplePredicate field="Glucose" operator="greaterThan" value="0.7166931879359328"/>
-        <ScoreDistribution value="1" recordCount="89.0"/>
+      <Node id="48" score="1" recordCount="125.0">
+        <SimplePredicate field="Glucose" operator="greaterThan" value="141.5"/>
+        <ScoreDistribution value="1" recordCount="92.0"/>
         <ScoreDistribution value="0" recordCount="33.0"/>
+        <Node id="49" score="1" recordCount="57.0">
+          <SimplePredicate field="Glucose" operator="lessOrEqual" value="160.0"/>
+          <ScoreDistribution value="1" recordCount="32.0"/>
+          <ScoreDistribution value="0" recordCount="25.0"/>
+          <Node id="50" score="0" recordCount="46.0">
+            <SimplePredicate field="BloodPressure" operator="lessOrEqual" value="85.5"/>
+            <ScoreDistribution value="1" recordCount="21.0"/>
+            <ScoreDistribution value="0" recordCount="25.0"/>
+            <Node id="51" score="0" recordCount="21.0">
+              <SimplePredicate field="DiabetesPedigreeFunction" operator="lessOrEqual" value="0.3145"/>
+              <ScoreDistribution value="1" recordCount="5.0"/>
+              <ScoreDistribution value="0" recordCount="16.0"/>
+            </Node>
+            <Node id="54" score="1" recordCount="25.0">
+              <SimplePredicate field="DiabetesPedigreeFunction" operator="greaterThan" value="0.3145"/>
+              <ScoreDistribution value="1" recordCount="16.0"/>
+              <ScoreDistribution value="0" recordCount="9.0"/>
+            </Node>
+          </Node>
+          <Node id="57" score="1" recordCount="11.0">
+            <SimplePredicate field="BloodPressure" operator="greaterThan" value="85.5"/>
+            <ScoreDistribution value="1" recordCount="11.0"/>
+            <ScoreDistribution value="0" recordCount="0.0"/>
+          </Node>
+        </Node>
+        <Node id="58" score="1" recordCount="68.0">
+          <SimplePredicate field="Glucose" operator="greaterThan" value="160.0"/>
+          <ScoreDistribution value="1" recordCount="60.0"/>
+          <ScoreDistribution value="0" recordCount="8.0"/>
+        </Node>
       </Node>
     </Node>
   </TreeModel>
