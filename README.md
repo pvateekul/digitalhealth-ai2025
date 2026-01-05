@@ -3,7 +3,8 @@
 ![alt text](https://github.com/pvateekul/digitalhealth-ai2025/blob/main/image/meme.png?raw=true)
 
 ## Syllabus:
-
+- [AI for Digital Health – Syllabus (PDF)](https://github.com/pvateekul/digitalhealth-ai2025/blob/main/3099704_Syllabus_AI%20for%20Digital%20Health_v1.pdf)
+  
 ## Code:
 
 ### Class01: Introduction to ML (Practical ML)
