@@ -1,0 +1,393 @@
+{
+  "name": "LAB 1 Pubmed Q&A Chatbot",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "options": {
+          "responseMode": "responseNodes"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -784,
+        -64
+      ],
+      "id": "53de82b4-039c-4941-aa89-ee13e8f9e556",
+      "name": "When chat message received",
+      "webhookId": "085e79be-fb81-4ea1-8b8c-099b88352b48"
+    },
+    {
+      "parameters": {
+        "content": "Search PubMed for “type 2 diabetes lifestyle intervention” and return the latest 3 studies with PMID + title + journal + year.\n"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -848,
+        96
+      ],
+      "id": "b2df1b89-5991-49f3-9086-098a087a59c6",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        512,
+        192
+      ],
+      "id": "54ddc167-acd3-415f-8f3e-e34d510d9535",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "dGjoxz2wfHMFdXvG",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "message": "={{ $json.output }}",
+        "waitUserReply": false,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chat",
+      "typeVersion": 1,
+      "position": [
+        1536,
+        -80
+      ],
+      "id": "182a3662-fb16-451f-aa5d-1aac0c93dac1",
+      "name": "Respond to Chat"
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.chatInput }}",
+        "guardrails": {
+          "keywords": "suicide, kill self, kill myself",
+          "pii": {
+            "value": {
+              "type": "all"
+            }
+          },
+          "secretKeys": {
+            "value": {
+              "permissiveness": "balanced"
+            }
+          }
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.guardrails",
+      "typeVersion": 2,
+      "position": [
+        -528,
+        -64
+      ],
+      "id": "fc6545c1-3cef-4297-b9f4-4130eab899bc",
+      "name": "Guardrails"
+    },
+    {
+      "parameters": {
+        "message": "I can’t process this message because it contains sensitive personal data/credentials or self-harm/suicide-related content. Please remove API keys and personal identifiers and try again. For self-harm/suicide messages, I can’t help here—if there is immediate risk, contact emergency services or a trusted adult. For academic requests, rephrase in a general research context.",
+        "waitUserReply": false,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chat",
+      "typeVersion": 1,
+      "position": [
+        -304,
+        80
+      ],
+      "id": "7cdab3db-de5c-416f-9bd3-a7bce930aa1e",
+      "name": "Safety failed responses"
+    },
+    {
+      "parameters": {
+        "content": "Here is my OpenAI key: sk-1234567890abcdefghijklmnopqrstuvwxyz\nMy name is John Doe, phone +66 81 234 5678, email john.doe@gmail.com"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -576,
+        -208
+      ],
+      "typeVersion": 1,
+      "id": "c14d32a6-1ebc-4600-bf30-56e198277dcd",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "promptType": "guardrails",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "You are a query planner for PubMed E-utilities (NCBI).\n\nYou will be given a user request in plain text. Your job is to produce a plan as JSON for:\n1) PubMed ESearch to retrieve PMIDs\n2) PubMed ESummary to retrieve metadata for those PMIDs\n\nReturn ONLY valid JSON that matches the schema below. Do not include any prose.\n\nImportant rules:\n- Always plan to retrieve metadata via ESummary. Therefore ALWAYS include a \"metadata\" object.\n- Do NOT include PMIDs in your output (PMIDs come from the ESearch API response).\n- If the user does NOT specify how many results to return, set esearch.retmax = 3.\n- If the user specifies a number (e.g., \"latest 10\", \"top 5\", \"return 20\"), set esearch.retmax to that number (cap at 20 unless the user explicitly requests more).\n- If the user asks for \"latest\" or \"most recent\", set esearch.sort = \"pub_date\". Otherwise use \"relevance\".\n- The ESearch term must be a PubMed query string. Preserve user-supplied quoted phrases when appropriate. Use AND between concepts when needed.\n\nSchema (must follow exactly):\n{\n  \"esearch\": {\n    \"term\": string,\n    \"retmax\": integer,\n    \"sort\": \"pub_date\" | \"relevance\"\n  },\n  \"metadata\": {\n    \"source\": \"esummary\",\n    \"fields\": string[]\n  },\n  \"answer_constraints\": {\n    \"output_format\": \"table\" | \"bullets\",\n    \"include_pmids\": boolean\n  }\n}\n\nField selection rules for metadata.fields:\n- Always include: \"title\", \"fulljournalname\", \"pubdate\"\n- If the user asks for authors, include \"authors\"\n- If the user asks for journal abbreviation/source, include \"source\"\n- If the user asks for year only, still include \"pubdate\" (year will be extracted later)\n\nanswer_constraints rules:\n- If the user asks for a table, set output_format=\"table\"; otherwise default to \"bullets\".\n- Set include_pmids=true unless the user explicitly says not to include PMIDs.\n\nNow produce the JSON plan.\n",
+          "maxIterations": 2
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        -64,
+        -80
+      ],
+      "id": "88a7b65d-7215-4ec0-9c5a-073456ab1905",
+      "name": "LLMQueryBuilder"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=User request:\n{{ $json.guardrailsInput }}\n\nPubMed ESummary payload (JSON):\n{{ JSON.stringify($json.result, null, 2) }}\n",
+        "options": {
+          "systemMessage": "You are a PubMed results formatter for end users.\n\nYou will receive:\n1) The user request text\n2) A PubMed ESummary JSON payload in the user message\n\nTask:\n1) Read the user request from guardrailsInput.\n2) Using PMIDs in result.uids (in that order), select the number of studies requested:\n   - If the user asks for “latest 3” or “3 studies”, return at most 3.\n   - Otherwise, return up to 5 unless the user specifies another number.\n3) For each selected PMID, extract:\n   - Title: result[PMID].title\n   - Journal: prefer result[PMID].fulljournalname; if missing use result[PMID].source\n   - Year: extract the first 4-digit year found in result[PMID].pubdate; if none, try result[PMID].epubdate; otherwise leave blank.\n\nOutput requirements:\n- Output plain text only. Do NOT output JSON.\n- Provide a clean list format that is easy to read, for example:\n\n1) PMID: <pmid>\n   Title: <title>\n   Journal: <journal>\n   Year: <year>\n\nGrounding and safety constraints:\n- Do not invent studies or details not present in the input JSON.\n- If a field is missing, leave it blank or write “(not available)”.\n- Keep the response non-prescriptive: do not provide diagnosis or personalized treatment recommendations.\n- Do not add extra medical advice; only format and present the retrieved studies.\n",
+          "maxIterations": 2
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        1168,
+        -80
+      ],
+      "id": "59b45cb0-894c-4fda-a188-f714c7da4dbb",
+      "name": "SearchPlusMetadata",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1264,
+        128
+      ],
+      "id": "69aa59fc-1a3c-45ed-9e7f-58d772bec914",
+      "name": "Summary Memory"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"esearch\": {\n    \"term\": \"\\\"type 2 diabetes\\\" lifestyle intervention\",\n    \"retmax\": 3,\n    \"sort\": \"pub_date\"\n  },\n  \"metadata\": {\n    \"source\": \"esummary\",\n    \"fields\": [\"title\", \"fulljournalname\", \"pubdate\", \"authors\"]\n  },\n  \"answer_constraints\": {\n    \"output_format\": \"table\",\n    \"include_pmids\": true\n  }\n}\n",
+        "autoFix": true
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        64,
+        112
+      ],
+      "id": "81dc1013-fef9-472f-b637-4f41c3c8db83",
+      "name": "Structured Queries Output"
+    },
+    {
+      "parameters": {
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi",
+        "sendQuery": true,
+        "specifyQuery": "json",
+        "jsonQuery": "={\n  \"db\": \"pubmed\",\n  \"term\": \"{{ $json.output.esearch.term }}\",\n  \"retmode\": \"json\",\n  \"retmax\": {{ $json.output.esearch.retmax }},\n  \"sort\": \"{{ $json.output.esearch.sort }}\",\n  \"tool\": \"n8n-med-ed-lab\",\n  \"email\": \"YOUR_REAL_EMAIL@DOMAIN\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        256,
+        -352
+      ],
+      "id": "1332fb3c-319f-42d5-bad7-955cfd144d2b",
+      "name": "Pubmed Search"
+    },
+    {
+      "parameters": {
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+        "sendQuery": true,
+        "specifyQuery": "json",
+        "jsonQuery": "={\n  \"db\": \"pubmed\",\n  \"id\": \"{{ $json.esearchresult.idlist }}\",\n  \"retmode\": \"json\",\n  \"tool\": \"n8n-med-ed-lab\",\n  \"email\": \"YOUR_REAL_EMAIL@DOMAIN\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        560,
+        -352
+      ],
+      "id": "36fa20f1-300b-432a-b408-fbb501504c5b",
+      "name": "Pubmed Metadata"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        896,
+        -336
+      ],
+      "id": "ed2dc03b-6f44-4515-b833-b1a8cc398588",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "content": "Keywrds or sensitve tpc eg.suicde"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -352,
+        -16
+      ],
+      "typeVersion": 1,
+      "id": "a827e447-c060-452f-af9d-a8a4cc9ae87c",
+      "name": "Sticky Note2"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Guardrails",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "SearchPlusMetadata",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "LLMQueryBuilder",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Structured Queries Output",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Guardrails": {
+      "main": [
+        [
+          {
+            "node": "LLMQueryBuilder",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "Safety failed responses",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SearchPlusMetadata": {
+      "main": [
+        [
+          {
+            "node": "Respond to Chat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summary Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "SearchPlusMetadata",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Queries Output": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "LLMQueryBuilder",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LLMQueryBuilder": {
+      "main": [
+        [
+          {
+            "node": "Pubmed Search",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pubmed Search": {
+      "main": [
+        [
+          {
+            "node": "Pubmed Metadata",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pubmed Metadata": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "SearchPlusMetadata",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "516579d7-f92b-462e-8ef7-d86c15480838",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "8b34d74512c1a7931087c9f927da5f5652a2f40604bceec16a07ea60ca2adf1e"
+  },
+  "id": "9WhHxCwq8BYRhsoJ",
+  "tags": []
+}
