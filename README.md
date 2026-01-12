@@ -27,6 +27,8 @@
 
 ### Class05: Image segmentation
 
+0. Image segmeentation with YOLO (Ultralytics Hub) : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Class05_MONAI/Lab_5_0_ultralyricshub.ipynb)
+
 0. Image segmeentation with YOLO (Ultralytics) : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Class05_MONAI/Lab_5_0_ultralyrics.ipynb)
 
 1. 2D image segmentation (MONAI) : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Class05_MONAI/Lab_5_1_MONAI(2Dsegmentaton).ipynb)
@@ -46,6 +48,7 @@
 
 3. SHAP Values : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Class07_ASR&FaceRecognition/Lab_7_3_SHAPValues.ipynb)
 
+4. Grad CAM : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Class07_ASR&FaceRecognition/Lab_7_4_GradCAM.ipynb)
 
 ### Class08: Intro to LLM
 
