@@ -4,6 +4,9 @@
 
 ## Syllabus:
 - [AI for Digital Health – Syllabus (PDF)](https://github.com/pvateekul/digitalhealth-ai2025/blob/main/3099704_Syllabus_AI%20for%20Digital%20Health_v1.pdf)
+
+## Mini-Project
+- [AI for Digital Health Mini-Project (50%) (Slide)](https://docs.google.com/presentation/d/1_jiFIn-4zViCw1ED060FWAUu1SQwAAEvNJGyTBBWWcU/edit?usp=sharing)
   
 ## Code:
 
