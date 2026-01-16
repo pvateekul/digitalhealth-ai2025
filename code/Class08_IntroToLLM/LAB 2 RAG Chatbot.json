@@ -9,10 +9,10 @@
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "typeVersion": 1.1,
       "position": [
-        1952,
-        208
+        -592,
+        496
       ],
-      "id": "7e8f6c83-4c1b-4f47-a66d-0ab5b8297c95",
+      "id": "c572e497-3ef6-4441-869d-e48ddf14605b",
       "name": "Default Data Loader"
     },
     {
@@ -24,11 +24,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1472,
-        -16
+        -1072,
+        272
       ],
       "typeVersion": 1,
-      "id": "8384486d-571b-44cc-a584-7d5f1f0a5310",
+      "id": "b1ed9765-6b1a-4be1-945f-0d9e464613f3",
       "name": "Sticky Note1"
     },
     {
@@ -39,16 +39,15 @@
           "value": "vector_store_key",
           "mode": "list",
           "cachedResultName": "vector_store_key"
-        },
-        "clearStore": true
+        }
       },
       "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
       "typeVersion": 1.2,
       "position": [
-        1712,
-        48
+        -832,
+        336
       ],
-      "id": "13203b51-2eb6-429a-a717-ccc8bc1f8837",
+      "id": "00db0618-60b3-4039-baee-b9cd94ef39bd",
       "name": "Insert Data to Store"
     },
     {
@@ -65,10 +64,10 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
       "typeVersion": 1.2,
       "position": [
-        2576,
-        336
+        32,
+        624
       ],
-      "id": "8daf2b7d-29e7-48b6-9a03-7ffb61b9135c",
+      "id": "7db0361e-5cf3-44ae-bbb7-3da3ea6228f2",
       "name": "Query Data Tool"
     },
     {
@@ -80,11 +79,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        2256,
-        -16
+        -288,
+        272
       ],
       "typeVersion": 1,
-      "id": "e4a8d771-6e91-4a0b-b6d9-678fdab00d68",
+      "id": "443900b1-9846-4e87-8a89-a792a1342b78",
       "name": "Sticky Note2"
     },
     {
@@ -97,10 +96,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2,
       "position": [
-        2592,
-        32
+        48,
+        320
       ],
-      "id": "b565e847-1325-4b82-aadb-fb58b3b0cb4f",
+      "id": "8e41b36e-786e-46ed-829e-fd136bbff5d9",
       "name": "AI Agent1"
     },
     {
@@ -110,14 +109,14 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        2336,
-        224
+        -208,
+        512
       ],
-      "id": "33c8e84b-60cc-4288-b54d-93c650703755",
+      "id": "2b31c5a5-5a9d-4031-88bf-0f57eedfce18",
       "name": "Google Gemini Chat Model",
       "credentials": {
         "googlePalmApi": {
-          "id": "dGjoxz2wfHMFdXvG",
+          "id": "h0cs8PXnvL3qSRRt",
           "name": "Google Gemini(PaLM) Api account"
         }
       }
@@ -129,14 +128,14 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
       "typeVersion": 1,
       "position": [
-        2160,
-        528
+        -384,
+        816
       ],
-      "id": "0026de68-a676-44a8-94bb-e02b9b28a52a",
+      "id": "c0b72007-fa94-426b-9212-1017446d357a",
       "name": "Embeddings Google Gemini",
       "credentials": {
         "googlePalmApi": {
-          "id": "dGjoxz2wfHMFdXvG",
+          "id": "h0cs8PXnvL3qSRRt",
           "name": "Google Gemini(PaLM) Api account"
         }
       }
@@ -179,10 +178,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        2544,
-        -288
+        0,
+        0
       ],
-      "id": "c24d6fef-85d2-4942-af98-3e100569e969",
+      "id": "a970c4d4-e569-46ab-b078-d47fc6b76643",
       "name": "If"
     },
     {
@@ -194,11 +193,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        2320,
-        496
+        -224,
+        784
       ],
       "typeVersion": 1,
-      "id": "b38f2025-c51c-4ecd-aa32-bb4eebbedf6d",
+      "id": "2daa26d4-b526-4309-9749-5de9a349e7d2",
       "name": "Sticky Note3"
     },
     {
@@ -210,11 +209,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        992,
-        -16
+        -1552,
+        272
       ],
       "typeVersion": 1,
-      "id": "d0911e82-16f3-4115-9ccd-7baeec06f052",
+      "id": "db37e569-7d89-4f03-9ec3-9c547f91b023",
       "name": "Sticky Note"
     },
     {
@@ -222,10 +221,10 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        2544,
-        224
+        0,
+        512
       ],
-      "id": "5dd6289b-01c9-4cbe-ab35-cab35a3161fa",
+      "id": "19f04e8a-7fdd-4aea-bf1d-0abc3f2380e3",
       "name": "Simple Memory"
     },
     {
@@ -239,10 +238,10 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.4,
       "position": [
-        2352,
-        32
+        -192,
+        320
       ],
-      "id": "d8690a62-5e45-480d-a155-92c8c3ae3504",
+      "id": "507fd1e0-842e-441b-af3a-b9b2348a7297",
       "name": "When chat message received",
       "webhookId": "3b07e15e-c77a-4e11-9adb-feba4e3cc1bd"
     },
@@ -255,10 +254,10 @@
       "type": "@n8n/n8n-nodes-langchain.chat",
       "typeVersion": 1,
       "position": [
-        2992,
-        32
+        448,
+        320
       ],
-      "id": "bc057163-dae3-4f66-8550-aa0441d5e59c",
+      "id": "b4280785-f9bb-4c30-818e-57a9aae7f616",
       "name": "Respond to Chat1"
     }
   ],
@@ -321,8 +320,7 @@
             "type": "main",
             "index": 0
           }
-        ],
-        []
+        ]
       ]
     },
     "AI Agent1": {
@@ -362,22 +360,18 @@
           }
         ]
       ]
-    },
-    "Insert Data to Store": {
-      "main": [
-        []
-      ]
     }
   },
   "active": true,
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "availableInMCP": false
   },
-  "versionId": "7824ca8f-256c-48b3-bbbc-144439403648",
+  "versionId": "17e16b7b-747b-4072-a2df-9af717cd882d",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "8b34d74512c1a7931087c9f927da5f5652a2f40604bceec16a07ea60ca2adf1e"
+    "instanceId": "a3323f744429ac0199e12cec7f3103e8d63ab150a84554b12269bf05369baf38"
   },
-  "id": "2JOSYWmUHl99fbfS",
+  "id": "XwNLMDd2BFBsR1bclYM1R",
   "tags": []
 }

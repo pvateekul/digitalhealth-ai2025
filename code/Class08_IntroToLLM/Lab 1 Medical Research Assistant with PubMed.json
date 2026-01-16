@@ -1,5 +1,5 @@
 {
-  "name": "LAB 1 Pubmed Q&A Chatbot",
+  "name": "Lab 1 Medical Research Assistant with PubMed",
   "nodes": [
     {
       "parameters": {
@@ -11,10 +11,10 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.4,
       "position": [
-        -784,
-        -64
+        -1040,
+        288
       ],
-      "id": "53de82b4-039c-4941-aa89-ee13e8f9e556",
+      "id": "0dd035b6-6e60-4f82-824e-b3afc15d8daf",
       "name": "When chat message received",
       "webhookId": "085e79be-fb81-4ea1-8b8c-099b88352b48"
     },
@@ -25,10 +25,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -848,
-        96
+        -1104,
+        448
       ],
-      "id": "b2df1b89-5991-49f3-9086-098a087a59c6",
+      "id": "a724f4d7-d48a-4a7d-ae67-131f2e9dc986",
       "name": "Sticky Note1"
     },
     {
@@ -38,14 +38,14 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        512,
-        192
+        256,
+        544
       ],
-      "id": "54ddc167-acd3-415f-8f3e-e34d510d9535",
+      "id": "107543c0-5b91-4d0d-a31a-3cfa0b924950",
       "name": "Google Gemini Chat Model",
       "credentials": {
         "googlePalmApi": {
-          "id": "dGjoxz2wfHMFdXvG",
+          "id": "h0cs8PXnvL3qSRRt",
           "name": "Google Gemini(PaLM) Api account"
         }
       }
@@ -59,10 +59,10 @@
       "type": "@n8n/n8n-nodes-langchain.chat",
       "typeVersion": 1,
       "position": [
-        1536,
-        -80
+        1280,
+        272
       ],
-      "id": "182a3662-fb16-451f-aa5d-1aac0c93dac1",
+      "id": "b70b4e94-24ff-4ee6-a4e2-984cff4b3582",
       "name": "Respond to Chat"
     },
     {
@@ -85,10 +85,10 @@
       "type": "@n8n/n8n-nodes-langchain.guardrails",
       "typeVersion": 2,
       "position": [
-        -528,
-        -64
+        -784,
+        288
       ],
-      "id": "fc6545c1-3cef-4297-b9f4-4130eab899bc",
+      "id": "97474cf3-df14-42a4-bb6b-d91d37e25c54",
       "name": "Guardrails"
     },
     {
@@ -100,10 +100,10 @@
       "type": "@n8n/n8n-nodes-langchain.chat",
       "typeVersion": 1,
       "position": [
-        -304,
-        80
+        -560,
+        432
       ],
-      "id": "7cdab3db-de5c-416f-9bd3-a7bce930aa1e",
+      "id": "ab8b8234-ae2b-4737-92fe-d5431a1c7dc4",
       "name": "Safety failed responses"
     },
     {
@@ -112,59 +112,22 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -576,
-        -208
+        -832,
+        144
       ],
       "typeVersion": 1,
-      "id": "c14d32a6-1ebc-4600-bf30-56e198277dcd",
+      "id": "307d3ece-bac1-4ccd-93be-7db65b968b89",
       "name": "Sticky Note"
-    },
-    {
-      "parameters": {
-        "promptType": "guardrails",
-        "hasOutputParser": true,
-        "options": {
-          "systemMessage": "You are a query planner for PubMed E-utilities (NCBI).\n\nYou will be given a user request in plain text. Your job is to produce a plan as JSON for:\n1) PubMed ESearch to retrieve PMIDs\n2) PubMed ESummary to retrieve metadata for those PMIDs\n\nReturn ONLY valid JSON that matches the schema below. Do not include any prose.\n\nImportant rules:\n- Always plan to retrieve metadata via ESummary. Therefore ALWAYS include a \"metadata\" object.\n- Do NOT include PMIDs in your output (PMIDs come from the ESearch API response).\n- If the user does NOT specify how many results to return, set esearch.retmax = 3.\n- If the user specifies a number (e.g., \"latest 10\", \"top 5\", \"return 20\"), set esearch.retmax to that number (cap at 20 unless the user explicitly requests more).\n- If the user asks for \"latest\" or \"most recent\", set esearch.sort = \"pub_date\". Otherwise use \"relevance\".\n- The ESearch term must be a PubMed query string. Preserve user-supplied quoted phrases when appropriate. Use AND between concepts when needed.\n\nSchema (must follow exactly):\n{\n  \"esearch\": {\n    \"term\": string,\n    \"retmax\": integer,\n    \"sort\": \"pub_date\" | \"relevance\"\n  },\n  \"metadata\": {\n    \"source\": \"esummary\",\n    \"fields\": string[]\n  },\n  \"answer_constraints\": {\n    \"output_format\": \"table\" | \"bullets\",\n    \"include_pmids\": boolean\n  }\n}\n\nField selection rules for metadata.fields:\n- Always include: \"title\", \"fulljournalname\", \"pubdate\"\n- If the user asks for authors, include \"authors\"\n- If the user asks for journal abbreviation/source, include \"source\"\n- If the user asks for year only, still include \"pubdate\" (year will be extracted later)\n\nanswer_constraints rules:\n- If the user asks for a table, set output_format=\"table\"; otherwise default to \"bullets\".\n- Set include_pmids=true unless the user explicitly says not to include PMIDs.\n\nNow produce the JSON plan.\n",
-          "maxIterations": 2
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 3,
-      "position": [
-        -64,
-        -80
-      ],
-      "id": "88a7b65d-7215-4ec0-9c5a-073456ab1905",
-      "name": "LLMQueryBuilder"
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "=User request:\n{{ $json.guardrailsInput }}\n\nPubMed ESummary payload (JSON):\n{{ JSON.stringify($json.result, null, 2) }}\n",
-        "options": {
-          "systemMessage": "You are a PubMed results formatter for end users.\n\nYou will receive:\n1) The user request text\n2) A PubMed ESummary JSON payload in the user message\n\nTask:\n1) Read the user request from guardrailsInput.\n2) Using PMIDs in result.uids (in that order), select the number of studies requested:\n   - If the user asks for “latest 3” or “3 studies”, return at most 3.\n   - Otherwise, return up to 5 unless the user specifies another number.\n3) For each selected PMID, extract:\n   - Title: result[PMID].title\n   - Journal: prefer result[PMID].fulljournalname; if missing use result[PMID].source\n   - Year: extract the first 4-digit year found in result[PMID].pubdate; if none, try result[PMID].epubdate; otherwise leave blank.\n\nOutput requirements:\n- Output plain text only. Do NOT output JSON.\n- Provide a clean list format that is easy to read, for example:\n\n1) PMID: <pmid>\n   Title: <title>\n   Journal: <journal>\n   Year: <year>\n\nGrounding and safety constraints:\n- Do not invent studies or details not present in the input JSON.\n- If a field is missing, leave it blank or write “(not available)”.\n- Keep the response non-prescriptive: do not provide diagnosis or personalized treatment recommendations.\n- Do not add extra medical advice; only format and present the retrieved studies.\n",
-          "maxIterations": 2
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 3,
-      "position": [
-        1168,
-        -80
-      ],
-      "id": "59b45cb0-894c-4fda-a188-f714c7da4dbb",
-      "name": "SearchPlusMetadata",
-      "alwaysOutputData": true
     },
     {
       "parameters": {},
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        1264,
-        128
+        1008,
+        480
       ],
-      "id": "69aa59fc-1a3c-45ed-9e7f-58d772bec914",
+      "id": "31e2fa3a-06d3-42ca-9d6d-f0a55d8dcb03",
       "name": "Summary Memory"
     },
     {
@@ -175,10 +138,10 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
       "position": [
-        64,
-        112
+        -192,
+        464
       ],
-      "id": "81dc1013-fef9-472f-b637-4f41c3c8db83",
+      "id": "16c3fe76-639a-468f-a419-fe571f5f35a1",
       "name": "Structured Queries Output"
     },
     {
@@ -192,10 +155,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        256,
-        -352
+        0,
+        0
       ],
-      "id": "1332fb3c-319f-42d5-bad7-955cfd144d2b",
+      "id": "738c89a9-1759-4fe3-a590-90f9d8cf82ef",
       "name": "Pubmed Search"
     },
     {
@@ -209,10 +172,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        560,
-        -352
+        304,
+        0
       ],
-      "id": "36fa20f1-300b-432a-b408-fbb501504c5b",
+      "id": "bff72470-eef6-4b34-b136-cd0c734800c6",
       "name": "Pubmed Metadata"
     },
     {
@@ -224,10 +187,10 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        896,
-        -336
+        640,
+        16
       ],
-      "id": "ed2dc03b-6f44-4515-b833-b1a8cc398588",
+      "id": "c9d8ae1c-bc5d-476a-951f-18a01ffcd08a",
       "name": "Merge"
     },
     {
@@ -236,12 +199,49 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -352,
-        -16
+        -608,
+        336
       ],
       "typeVersion": 1,
-      "id": "a827e447-c060-452f-af9d-a8a4cc9ae87c",
+      "id": "b8303c47-6a13-4161-9eaa-7ff4a6e6043a",
       "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=User request:\n{{ $json.guardrailsInput }}\n\nPubMed ESummary payload (JSON):\n{{ JSON.stringify($json.result, null, 2) }}\n",
+        "options": {
+          "systemMessage": "You are a PubMed results formatter for end users.\n\nYou will receive:\n1) The user request text\n2) A PubMed ESummary JSON payload in the user message\n\nTask:\n1) Read the user request from guardrailsInput.\n2) Using PMIDs in result.uids (in that order), select the number of studies requested:\n   - If the user asks for “latest 3” or “3 studies”, return at most 3.\n   - Otherwise, return up to 5 unless the user specifies another number.\n3) For each selected PMID, extract:\n   - Title: result[PMID].title\n   - Journal: prefer result[PMID].fulljournalname; if missing use result[PMID].source\n   - Year: extract the first 4-digit year found in result[PMID].pubdate; if none, try result[PMID].epubdate; otherwise leave blank.\n\nOutput requirements:\n- Output plain text only. Do NOT output JSON.\n- Provide a clean list format that is easy to read, for example:\n\n1) PMID: <pmid>\n   Title: <title>\n   Journal: <journal>\n   Year: <year>\n\nGrounding and safety constraints:\n- Do not invent studies or details not present in the input JSON.\n- If a field is missing, leave it blank or write “(not available)”.\n- Keep the response non-prescriptive: do not provide diagnosis or personalized treatment recommendations.\n- Do not add extra medical advice; only format and present the retrieved studies.\n",
+          "maxIterations": 2
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        912,
+        272
+      ],
+      "id": "fa99785e-0f4a-48ab-8eec-5536ffb71998",
+      "name": "JsonToText",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "promptType": "guardrails",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "You are a query planner for PubMed E-utilities (NCBI).\n\nYou will be given a user request in plain text. Your job is to produce a plan as JSON for:\n1) PubMed ESearch to retrieve PMIDs\n2) PubMed ESummary to retrieve metadata for those PMIDs\n\nReturn ONLY valid JSON that matches the schema below. Do not include any prose.\n\nImportant rules:\n- Always plan to retrieve metadata via ESummary. Therefore ALWAYS include a \"metadata\" object.\n- Do NOT include PMIDs in your output (PMIDs come from the ESearch API response).\n- If the user does NOT specify how many results to return, set esearch.retmax = 3.\n- If the user specifies a number (e.g., \"latest 10\", \"top 5\", \"return 20\"), set esearch.retmax to that number (cap at 20 unless the user explicitly requests more).\n- If the user asks for \"latest\" or \"most recent\", set esearch.sort = \"pub_date\". Otherwise use \"relevance\".\n- The ESearch term must be a PubMed query string. Preserve user-supplied quoted phrases when appropriate. Use AND between concepts when needed.\n\nSchema (must follow exactly):\n{\n  \"esearch\": {\n    \"term\": string,\n    \"retmax\": integer,\n    \"sort\": \"pub_date\" | \"relevance\"\n  },\n  \"metadata\": {\n    \"source\": \"esummary\",\n    \"fields\": string[]\n  },\n  \"answer_constraints\": {\n    \"output_format\": \"table\" | \"bullets\",\n    \"include_pmids\": boolean\n  }\n}\n\nField selection rules for metadata.fields:\n- Always include: \"title\", \"fulljournalname\", \"pubdate\"\n- If the user asks for authors, include \"authors\"\n- If the user asks for journal abbreviation/source, include \"source\"\n- If the user asks for year only, still include \"pubdate\" (year will be extracted later)\n\nanswer_constraints rules:\n- If the user asks for a table, set output_format=\"table\"; otherwise default to \"bullets\".\n- Set include_pmids=true unless the user explicitly says not to include PMIDs.\n\nNow produce the JSON plan.\n",
+          "maxIterations": 2
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        -320,
+        272
+      ],
+      "id": "9dfba064-a99b-4269-b087-9ec82d89a079",
+      "name": "TextToJson"
     }
   ],
   "pinData": {},
@@ -261,12 +261,12 @@
       "ai_languageModel": [
         [
           {
-            "node": "SearchPlusMetadata",
+            "node": "JsonToText",
             "type": "ai_languageModel",
             "index": 0
           },
           {
-            "node": "LLMQueryBuilder",
+            "node": "TextToJson",
             "type": "ai_languageModel",
             "index": 0
           },
@@ -282,7 +282,7 @@
       "main": [
         [
           {
-            "node": "LLMQueryBuilder",
+            "node": "TextToJson",
             "type": "main",
             "index": 0
           },
@@ -301,22 +301,11 @@
         ]
       ]
     },
-    "SearchPlusMetadata": {
-      "main": [
-        [
-          {
-            "node": "Respond to Chat",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Summary Memory": {
       "ai_memory": [
         [
           {
-            "node": "SearchPlusMetadata",
+            "node": "JsonToText",
             "type": "ai_memory",
             "index": 0
           }
@@ -327,19 +316,8 @@
       "ai_outputParser": [
         [
           {
-            "node": "LLMQueryBuilder",
+            "node": "TextToJson",
             "type": "ai_outputParser",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "LLMQueryBuilder": {
-      "main": [
-        [
-          {
-            "node": "Pubmed Search",
-            "type": "main",
             "index": 0
           }
         ]
@@ -371,7 +349,29 @@
       "main": [
         [
           {
-            "node": "SearchPlusMetadata",
+            "node": "JsonToText",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "JsonToText": {
+      "main": [
+        [
+          {
+            "node": "Respond to Chat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TextToJson": {
+      "main": [
+        [
+          {
+            "node": "Pubmed Search",
             "type": "main",
             "index": 0
           }
@@ -381,13 +381,14 @@
   },
   "active": true,
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "availableInMCP": false
   },
-  "versionId": "516579d7-f92b-462e-8ef7-d86c15480838",
+  "versionId": "ead4eaae-1df4-492a-8ccc-68fb99d02796",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "8b34d74512c1a7931087c9f927da5f5652a2f40604bceec16a07ea60ca2adf1e"
+    "instanceId": "a3323f744429ac0199e12cec7f3103e8d63ab150a84554b12269bf05369baf38"
   },
-  "id": "9WhHxCwq8BYRhsoJ",
+  "id": "UOqGW1OXiHfByRf35qGG9",
   "tags": []
 }
