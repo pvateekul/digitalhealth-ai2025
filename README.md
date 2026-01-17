@@ -51,7 +51,9 @@
 
 3. SHAP Values : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Class07_ASR&FaceRecognition/Lab_7_3_SHAPValues.ipynb)
 
-4. Grad CAM : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Class07_ASR&FaceRecognition/Lab_7_4_GradCAM.ipynb)
+4. Grad CAM (From Scratch): [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Class07_ASR&FaceRecognition/Lab_7_4_GradCAM.ipynb)
+
+5. Grad CAM (pytorch_grad_cam): [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Class07_ASR&FaceRecognition/Lab_7_4_GradCAM_Pytorch.ipynb)
 
 ### Class08-09: LLM (no code; in N8N)
 
