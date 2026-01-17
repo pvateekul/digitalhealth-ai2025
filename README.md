@@ -44,7 +44,7 @@
 
 2. Segmentation (MONAI): [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Class06_Roboflow/Lab_6_2_Segmentation.ipynb)
 
-### Class07: ASR + TTS
+### Class07: ASR + Face Recognition + XAI
 1. ASR : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Class07_ASR&FaceRecognition/Lab_7_1_ASR.ipynb)
 
 2. Face Recognition : [![Open In Colab](https://raw.githubusercontent.com/pvateekul/digitalhealth-ai2025/main/image/colab-badge.svg)](https://colab.research.google.com/github/pvateekul/digitalhealth-ai2025/blob/main/code/Class07_ASR&FaceRecognition/Lab_7_2_FaceRecognition.ipynb)
