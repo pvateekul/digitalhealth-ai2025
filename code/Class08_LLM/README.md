@@ -13,7 +13,7 @@
 
 ## Lab 8.1) Medical Research Assistant with PubMed
 - Diagram: [![PNG](https://img.shields.io/badge/View-Diagram-lightgrey)](https://github.com/pvateekul/digitalhealth-ai2025/blob/main/code/Class08_LLM/Lab8_1.png)
-- Manual: [![PDF](https://img.shields.io/badge/Open-PDF-red)](https://github.com/pvateekul/digitalhealth-ai2025/blob/main/code/Class08_LLM/Medical_Research_Assistant_with_PubMed.pdf)
+- Manual: [![PDF](https://img.shields.io/badge/Open-PDF-red)](https://github.com/pvateekul/digitalhealth-ai2025/blob/main/code/Class08_LLM/Lab8_1_Medical_Research_Assistant_with_PubMed.pdf)
 - Prompt Messages: [![TXT](https://img.shields.io/badge/TXT-.txt-blue)](https://github.com/pvateekul/digitalhealth-ai2025/blob/main/code/Class08_LLM/lab8_1_script.txt)
 - n8n workflow (JSON): [![JSON](https://img.shields.io/badge/n8n-JSON-blue)](https://github.com/pvateekul/digitalhealth-ai2025/blob/main/code/Class08_LLM/Lab%208_1%20Medical%20Research%20Assistant%20with%20PubMed.json)
 
